@@ -1,13 +1,13 @@
+use std::{
+    fs::File,
+    io::{stdin, Read},
+};
+
 fn bytes_to_python(bytes: &[u8]) -> String {
     // Format each byte into its hexadecimal representation, prefixed with '\x'
     let hex_parts: Vec<String> = bytes.iter().map(|b| format!("\\x{:02X}", b)).collect();
     format!("b'{}'", hex_parts.join(""))
 }
-
-use std::{
-    fs::File,
-    io::{stdin, Read},
-};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args().collect();
@@ -31,3 +31,4 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     Ok(())
 }
+
